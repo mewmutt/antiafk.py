@@ -26,14 +26,14 @@ def hold_key(key, s):
 
 def on_press(key, abortKey='esc'):    
     try:
-        k = key.char  # single-char keys
+        k = key.char  
     except:
-        k = key.name  # other keys    
+        k = key.name    
 
     print('pressed %s' % (k))
     if k == abortKey:
         print('end loop ...')
-        return False  # stop listener
+        return False  
 
 def loop_fun():
     while True:
@@ -52,9 +52,9 @@ def loop_fun():
 if __name__ == '__main__':
     abortKey = 't'
     listener = keyboard.Listener(on_press=on_press, abortKey=abortKey)
-    listener.start()  # start to listen on a separate thread
+    listener.start()  
 
-    # start thread with loop
+    
     Thread(target=loop_fun, args=(), name='loop_fun', daemon=True).start()
 
     listener.join() 
